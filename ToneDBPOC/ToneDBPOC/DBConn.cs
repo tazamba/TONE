@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Data.SqlClient;
 
 namespace ToneLab1
 {
-    class DBConn
+    public class DBConn
     {
 
        private static string dataSource = @"DESKTOP-RF8B7LP\SQLEXPRESS";
@@ -12,9 +14,9 @@ namespace ToneLab1
        private string connString = @"Data Source=" + dataSource + ";Initial Catalog="
                     + database + ";Persist Security Info=True;";
 
-        public SqlConnection conn;
+        SqlConnection conn;
 
-        public DBConn()
+        public SqlConnection openConn()
         {
             this.conn = new SqlConnection(connString);
             try
@@ -24,12 +26,11 @@ namespace ToneLab1
                 conn.Open();
 
                 Console.WriteLine("Connection successful!");
-
             }catch(Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
             }
-
+            return this.conn;
         }
 
         public void close()

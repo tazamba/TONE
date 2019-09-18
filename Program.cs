@@ -6,7 +6,7 @@ namespace ToneLab1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DBConn newConn = new DBConn();
         }
 
         public static string replace(string item, char delimiter, char selection)
